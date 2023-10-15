@@ -1,7 +1,11 @@
 import discord
 import random
-import os
-from keep_alive import keep_alive
+
+from decouple import config
+
+
+TOKEN = config('DISCORD_TOKEN')
+CHANNELID = config('DISCODE_CHANELID')
 
 intents = discord.Intents.all()
 intents.messages = True 
@@ -24,6 +28,5 @@ async def on_message(message: discord.Message):
     if response is not None:
         await message.channel.send(response)
 
-keep_alive()
 client.run(TOKEN)
 
